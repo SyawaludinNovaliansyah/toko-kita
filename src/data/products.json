@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "name": "Smartphone X Pro",
+    "price": 7999000,
+    "image": "https://techdaily.id/wp-content/uploads/2024/11/Cubot-KingKong-X-Pro-Smartphone-Tangguh-Cover.jpg",
+    "category": "Elektronik",
+    "description": "Kamera utama 108MP, baterai 6000mAh, fast charging 65W",
+    "stock": 15
+  },
+  {
+    "id": 2,
+    "name": "Laptop Gaming Predator X",
+    "price": 21999000,
+    "image": "https://s.alicdn.com/@sc04/kf/H755355196440420487cf079443f2d3d6P.png",
+    "category": "Elektronik",
+    "description": "RTX 4070, Intel Core i9 Gen 13, 32GB RAM, SSD 1TB",
+    "stock": 8
+  },
+  {
+    "id": 3,
+    "name": "Kaos Polos Premium Cotton",
+    "price": 89000,
+    "image": "https://down-id.img.susercontent.com/file/id-11134207-7rasg-m5cy75a07sa05b",
+    "category": "Fashion",
+    "description": "100% katun combed 30s, adem dan tidak mudah melar",
+    "stock": 120
+  },
+  {
+    "id": 4,
+    "name": "Sepatu Running UltraBoost",
+    "price": 1899000,
+    "image": "https://photo-fhad-fithub.s3.ap-southeast-1.amazonaws.com/Kenzo_Run_31c323e0f8.jpg",
+    "category": "Fashion",
+    "description": "Teknologi Boost sole, ringan, cocok untuk lari jarak jauh",
+    "stock": 35
+  },
+  {
+    "id": 5,
+    "name": "Headphone Wireless Pro ANC",
+    "price": 3499000,
+    "image": "https://img.id.my-best.com/product_images/75f526fbb360ac0f9b81dc06ebacbc0a.jpeg",
+    "category": "Elektronik",
+    "description": "Active Noise Cancelling, baterai hingga 40 jam",
+    "stock": 22
+  },
+  {
+    "id": 6,
+    "name": "Buku 'Belajar Python dari Nol'",
+    "price": 125000,
+    "image": "https://www.anakteknik.co.id/property/7/articles/281/algoritma-dan-pemrograman-menggunakan-python.jpg",
+    "category": "Buku",
+    "description": "Panduan lengkap untuk pemula + 100+ latihan soal",
+    "stock": 45
+  },
+  {
+    "id": 7,
+    "name": "Mouse Gaming RGB 16000 DPI",
+    "price": 749000,
+    "image": "https://img.lazcdn.com/g/p/86291e7fd8195b5b18f224ef4c903953.jpg_720x720q80.jpg",
+    "category": "Elektronik",
+    "description": "Sensor Pixart 3389, 8 tombol programmable",
+    "stock": 28
+  },
+  {
+    "id": 8,
+    "name": "Smartwatch Galaxy Fit Pro",
+    "price": 2799000,
+    "image": "https://dynamic.zacdn.com/oRpMgT21S4UxVL0RkYKP6xwp7Gw=/filters:quality(70):format(webp)/https://static-id.zacdn.com/p/digitec-smart-watch-1212-5728454-1.jpg",
+    "category": "Elektronik",
+    "description": "AMOLED 1.6 inch, SpO2, detak jantung, tahan air 5ATM",
+    "stock": 18
+  },
+  {
+    "id": 9,
+    "name": "Tas Ransel Laptop Anti Air",
+    "price": 459000,
+    "image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//catalog-image/109/MTA-138957157/brd-44261_rztx-2155-tas-laptop-backpack-kapasitas-besar-15-6-inch-travel-tsa_full03-06d66404.jpg",
+    "category": "Fashion",
+    "description": "Muat laptop 17 inch, bahan waterproof, USB charging port",
+    "stock": 40
+  },
+  {
+    "id": 10,
+    "name": "Kamera Mirrorless Full-Frame",
+    "price": 18999000,
+    "image": "https://asset.kompas.com/crops/Zj5uPK4a88Soi9W6Sg_SHs_rQ90=/94x0:634x360/1200x800/data/photo/2023/07/27/64c235cdc69b7.jpg",
+    "category": "Elektronik",
+    "description": "Sensor 45MP, video 8K, dual card slot",
+    "stock": 5
+  },
+  {
+    "id": 11,
+    "name": "Meja Kerja Lipat Minimalis",
+    "price": 1299000,
+    "image": "https://down-id.img.susercontent.com/file/41dbd1a3d653ecf8872565b8e215f0e5",
+    "category": "Furniture",
+    "description": "Ukuran 120x60cm, kayu solid + kaki besi",
+    "stock": 25
+  },
+  {
+    "id": 12,
+    "name": "Kipas Angin Standing 16 inch",
+    "price": 389000,
+    "image": "https://www.ufoelektronika.com/image/cache/catalog/miyako/KAS1606X--1000x1000.jpg",
+    "category": "Perabot Rumah",
+    "description": "3 kecepatan, remote control, timer 7 jam",
+    "stock": 60
+  },
+  {
+    "id": 13,
+    "name": "Set Alat Masak 10 Pcs",
+    "price": 899000,
+    "image": "https://down-id.img.susercontent.com/file/id-11134207-7ra0l-mcu3r8df1epkdd",
+    "category": "Perabot Rumah",
+    "description": "Panci, wajan, spatula anti lengket teflon",
+    "stock": 32
+  },
+  {
+    "id": 14,
+    "name": "Powerbank 20000mAh Fast Charging",
+    "price": 299000,
+    "image": "https://img.lazcdn.com/g/p/1db4284a30b86eafdaf42c4b20a7c202.jpg_720x720q80.jpg",
+    "category": "Elektronik",
+    "description": "PD 65W + QC 3.0, 2 port USB-C",
+    "stock": 80
+  },
+  {
+    "id": 15,
+    "name": "Kursi Gaming Ergonomis",
+    "price": 2499000,
+    "image": "https://images-cdn.ubuy.co.id/635c9cb35edc02374c1f3c53-homall-ergonomic-gaming-chair-racing.jpg",
+    "category": "Furniture",
+    "description": "Reclining 180°, bantalan lumbar + neck pillow",
+    "stock": 15
+  },
+  {
+    "id": 16,
+    "name": "Panci Presto 8 Liter",
+    "price": 549000,
+    "image": "https://down-id.img.susercontent.com/file/61ab6abb8cadd244fc05a388a3a070e4",
+    "category": "Perabot Rumah",
+    "description": "Stainless steel, 3 sistem pengaman",
+    "stock": 42
+  },
+  {
+    "id": 17,
+    "name": "Celana Jeans Slim Fit Pria",
+    "price": 279000,
+    "image": "https://www.atalon.id/cdn/shop/files/LIF_6611.jpg?v=1698417766&width=1080",
+    "category": "Fashion",
+    "description": "Stretch denim, warna black faded",
+    "stock": 55
+  },
+  {
+    "id": 18,
+    "name": "Lampu LED Philips 12W 5 Pcs",
+    "price": 149000,
+    "image": "https://down-id.img.susercontent.com/file/id-11134207-7r98s-lqzzkwhs6bq191",
+    "category": "Perabot Rumah",
+    "description": "Cahaya putih 6500K, hemat listrik 90%",
+    "stock": 150
+  },
+  {
+    "id": 19,
+    "name": "Earphone TWS Gaming Low Latency",
+    "price": 459000,
+    "image": "https://doran.id/wp-content/uploads/2025/02/TWS-Gaming-JETE-CEG1-5.jpg",
+    "category": "Elektronik",
+    "description": "Latency 45ms, baterai total 28 jam",
+    "stock": 70
+  },
+  {
+    "id": 20,
+    "name": "Sprei Waterproof 180x200",
+    "price": 289000,
+    "image": "https://fajartimur.com/m/__sized__/item/Sprei_Waterproof_____-thumbnail-600x600-70.jpeg",
+    "category": "Perabot Rumah",
+    "description": "Anti air + anti ompol, motif minimalis",
+    "stock": 88
+  }
+]
