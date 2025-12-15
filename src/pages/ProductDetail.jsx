@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import useCart from '../hooks/useCart';
 import productsData from '../data/products.json';
 import { FaArrowLeft, FaCartPlus } from 'react-icons/fa';
-import Swal from 'sweetalert2'; // Import SweetAlert2
+import Swal from 'sweetalert2';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -26,33 +26,32 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
-    // Tambahkan produk sesuai jumlah yang dipilih
-    for (let i = 0; i < quantity; i++) {
-      addToCart(product);
-    }
+    const success = addToCart(product, quantity);
 
-    // SweetAlert2 — Notifikasi cantik
-    Swal.fire({
-      icon: 'success',
-      title: 'Berhasil Ditambahkan!',
-      html: `
-        <strong>${quantity} × ${product.name}</strong><br/>
-        <small>telah masuk ke keranjang belanja</small>
-      `,
-      timer: 2500,
-      timerProgressBar: true,
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      customClass: {
-        popup: 'animated fadeInRight faster'
-      }
-    });
+    if (success) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Berhasil Ditambahkan!',
+        html: `
+          <strong>${quantity} × ${product.name}</strong><br/>
+          <small>telah masuk ke keranjang belanja</small>
+        `,
+        timer: 2500,
+        timerProgressBar: true,
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+      });
+    }
   };
 
   const handleBuyNow = () => {
-    handleAddToCart();
-    navigate('/cart');
+    const success = addToCart(product, quantity);
+
+    if (success) {
+      navigate('/cart');
+    }
+    // Jika belum login → setelah login otomatis masuk cart
   };
 
   return (

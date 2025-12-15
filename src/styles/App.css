@@ -741,3 +741,242 @@ button {
   border-radius: 8px;
   margin-top: 1rem;
 }
+
+/* User Icon di Header */
+.user-icon {
+  margin-left: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.user-icon:hover {
+  background-color: #f3f4f6;
+}
+
+.user-icon svg {
+  font-size: 1.4rem;
+  color: #555;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* Modal Content */
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+}
+
+.login-form .form-group {
+  margin-bottom: 1.2rem;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.btn-login {
+  width: 100%;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.9rem;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #6b7280;
+}
+
+.register-link a {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #999;
+  cursor: pointer;
+}
+
+/* Responsif Mobile */
+@media (max-width: 768px) {
+  .user-icon {
+    margin-left: 1rem;
+  }
+}
+.user-logged-in {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-left: 1.5rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.user-name {
+  font-size: 1rem;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 1.4rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #fee2e2;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+/* Desktop nav default */
+.desktop-nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.desktop-nav a span {
+  margin-left: 0.5rem;
+}
+
+/* Mobile toggle default hidden */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #555;
+  cursor: pointer;
+}
+
+/* Close button di mobile menu */
+.close-mobile-menu {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #555;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 1rem;
+}
+
+.mobile-user-greeting {
+  font-size: 1.1rem;
+  color: #333;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #eee;
+}
+.swal-popup {
+  border-radius: 16px;
+}
+
+.swal-title {
+  font-size: 1.4rem;
+  color: #1f2937;
+}
+
+.swal-confirm-btn {
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+}
+
+.swal-cancel-btn {
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+}
+.swal-login-success {
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.animated-popup {
+  animation: swalBounceIn 0.6s ease-out;
+}
+
+@keyframes swalBounceIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  60% { transform: scale(1.05); }
+  80% { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+/* Pastikan SweetAlert selalu di depan mobile menu & modal login */
+.swal2-container {
+  z-index: 3000 !important; /* Lebih tinggi dari mobile menu (2000) dan modal login (2000) */
+}
+
+.swal2-popup {
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: styling tambahan biar lebih cantik */
+.swal-login-success-popup,
+.swal-logout-popup {
+  border-radius: 16px;
+}

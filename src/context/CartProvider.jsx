@@ -98,3 +98,4 @@ const cartValue = {
 };
 
 export default CartProvider;
+export { CartProvider };

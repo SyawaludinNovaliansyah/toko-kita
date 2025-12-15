@@ -8,24 +8,21 @@ const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart(product);
+    const success = addToCart(product, 1); // quantity = 1
 
-    // SweetAlert2 — Cantik & Profesional
-    Swal.fire({
-      icon: 'success',
-      title: 'Berhasil!',
-      text: `${product.name} telah ditambahkan ke keranjang`,
-      timer: 2000,
-      timerProgressBar: true,
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      customClass: {
-        popup: 'swal-popup',
-        title: 'swal-title',
-        htmlContainer: 'swal-text'
-      }
-    });
+    if (success) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: `${product.name} telah ditambahkan ke keranjang`,
+        timer: 2000,
+        timerProgressBar: true,
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+      });
+    }
+    // Jika false → user belum login, sudah ditangani di useCart (muncul toast warning)
   };
 
   return (
