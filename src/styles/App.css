@@ -1032,3 +1032,292 @@ button {
 .link-btn:hover {
   text-decoration: underline;
 }
+/* ============================================
+   ADMIN DASHBOARD - STYLING CANTIK & RESPONSIVE
+   ============================================ */
+
+/* Container utama dashboard */
+.admin-dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+/* Greeting Section */
+.admin-greeting h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.admin-greeting p {
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+/* Stats Cards Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--accent-color);
+  border-radius: 0 4px 4px 0;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.stat-card:nth-child(1) .stat-icon { background: #dbeafe; color: #3b82f6; --accent-color: #3b82f6; }
+.stat-card:nth-child(2) .stat-icon { background: #d1fae5; color: #10b981; --accent-color: #10b981; }
+.stat-card:nth-child(3) .stat-icon { background: #e9d5ff; color: #a855f7; --accent-color: #a855f7; }
+.stat-card:nth-child(4) .stat-icon { background: #fed7aa; color: #f97316; --accent-color: #f97316; }
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0.5rem 0;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+
+.stat-link {
+  color: #3b82f6;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s;
+}
+
+.stat-link:hover {
+  color: #2563eb;
+  gap: 0.6rem;
+}
+
+.growth-indicator {
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Chart Section */
+.chart-container {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 3rem;
+}
+
+.chart-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* Quick Actions */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.8rem;
+}
+
+.action-card {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  color: white;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.action-card:hover::after {
+  opacity: 1;
+}
+
+.action-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.action-icon {
+  font-size: 4rem;
+  margin-bottom: 1.2rem;
+  opacity: 0.95;
+}
+
+.action-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.action-desc {
+  font-size: 1rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* Gradient untuk masing-masing card */
+.action-card:nth-child(1) { --gradient-start: #3b82f6; --gradient-end: #1d4ed8; }
+.action-card:nth-child(2) { --gradient-start: #10b981; --gradient-end: #059669; }
+.action-card:nth-child(3) { --gradient-start: #a855f7; --gradient-end: #9333ea; }
+
+/* ============================================
+   RESPONSIVE MOBILE (max-width: 768px)
+   ============================================ */
+@media (max-width: 768px) {
+  .admin-greeting h1 {
+    font-size: 2rem;
+  }
+
+  .admin-greeting p {
+    font-size: 1rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .stat-card {
+    padding: 1.5rem;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+
+  .chart-container {
+    padding: 1.5rem;
+  }
+
+  .chart-title {
+    font-size: 1.5rem;
+  }
+
+  .quick-actions {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .action-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .action-icon {
+    font-size: 3.5rem;
+  }
+
+  .action-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+  .admin-greeting h1 {
+    font-size: 1.8rem;
+  }
+
+  .stat-value {
+    font-size: 1.8rem;
+  }
+
+  .action-card {
+    padding: 1.8rem 1.2rem;
+  }
+
+  .action-icon {
+    font-size: 3rem;
+  }
+}
+/* FIX untuk Recharts agar grafik pasti muncul */
+.chart-container {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 3rem;
+  overflow: hidden; /* penting! */
+}
+
+.chart-container > div {
+  width: 100% !important;
+  height: 400px !important;
+}
+
+/* Responsif mobile */
+@media (max-width: 768px) {
+  .chart-container {
+    padding: 1.5rem;
+  }
+
+  .chart-container > div {
+    height: 300px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-container > div {
+    height: 280px !important;
+  }
+}
