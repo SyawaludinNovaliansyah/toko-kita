@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaBoxOpen, FaShoppingCart, FaChartBar, FaSignOutAlt, FaBars, FaTimes } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 import Swal from 'sweetalert2';
+import AdminProducts from '../pages/admin/AdminProducts';
 
 const AdminHeader = () => {
   const { user, logout } = useAuth();

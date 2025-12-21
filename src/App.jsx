@@ -15,9 +15,9 @@ import Checkout from './pages/Checkout'; // ← Pastikan Anda punya file ini
 
 import AdminDashboard from './pages/admin/AdminDashboard';
 // Tambahkan halaman admin lain di sini nanti:
-// import AdminProducts from './pages/admin/AdminProducts';
-// import AdminOrders from './pages/admin/AdminOrders';
-// import AdminSalesReport from './pages/admin/AdminSalesReport';
+import AdminProducts from './pages/admin/AdminProducts';
+import AdminOrders from './pages/admin/AdminOrders';
+import AdminSalesReport from './pages/admin/AdminSalesReport';
 
 import AdminLoginModal from './components/AdminLoginModal';
 
@@ -116,7 +116,7 @@ function AppContent() {
               }
             />
             {/* Tambahkan route admin lain di sini nanti */}
-            {/* 
+            
             <Route
               path="/admin/products"
               element={
@@ -141,7 +141,7 @@ function AppContent() {
                 </AdminRoute>
               }
             />
-            */}
+           
 
             {/* Catch-all */}
             <Route path="*" element={<Home />} />
