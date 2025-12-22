@@ -1,11 +1,14 @@
+// src/pages/Cart.jsx
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import useCart from '../hooks/useCart';
+import { useAuth } from '../context/AuthContext'; // Tambah ini
 import { FaTrash, FaShoppingBag, FaArrowLeft } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 const Cart = () => {
   const navigate = useNavigate();
+  const { user } = useAuth(); // Ambil status login
   const {
     cartItems,
     removeFromCart,
@@ -43,7 +46,7 @@ const Cart = () => {
     }
   };
 
-  // Hapus dengan SweetAlert
+  // Hapus item dengan konfirmasi
   const handleRemoveItem = (itemId, itemName) => {
     Swal.fire({
       title: 'Hapus Produk?',
@@ -63,13 +66,41 @@ const Cart = () => {
           title: 'Terhapus!',
           text: 'Produk telah dihapus dari keranjang',
           timer: 1500,
-          timerProgressBar: true,
           toast: true,
           position: 'top-end',
           showConfirmButton: false
         });
       }
     });
+  };
+
+  // Handle klik checkout
+  const handleCheckout = () => {
+    if (selectedItems.length === 0) {
+      Swal.fire('Oops!', 'Pilih minimal satu produk untuk checkout', 'warning');
+      return;
+    }
+
+    if (!user) {
+      // Belum login → minta login dulu
+      Swal.fire({
+        title: 'Login Diperlukan',
+        text: 'Kamu harus login terlebih dahulu untuk melanjutkan pembayaran',
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonText: 'Login Sekarang',
+        cancelButtonText: 'Nanti Saja',
+        confirmButtonColor: '#4c51bf',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Arahkan ke halaman login, setelah login kembali ke cart
+          navigate('/login', { state: { from: '/cart' } });
+        }
+      });
+    } else {
+      // Sudah login → lanjut ke checkout
+      navigate('/checkout', { state: { selectedItems } });
+    }
   };
 
   if (cartItems.length === 0) {
@@ -110,9 +141,7 @@ const Cart = () => {
             <div
               key={item.id}
               className="cart-item"
-              style={{ cursor: 'pointer' }}
               onClick={(e) => {
-                // Jangan buka detail jika klik checkbox, tombol, atau hapus
                 if (
                   e.target.closest('input[type="checkbox"]') ||
                   e.target.tagName === 'BUTTON' ||
@@ -120,13 +149,9 @@ const Cart = () => {
                 ) {
                   return;
                 }
-                // Ganti route sesuai project kamu
                 navigate(`/product/${item.id}`);
-                // atau: navigate(`/products/${item.id}`);
-                // atau: navigate(`/detail/${item.id}`);
               }}
             >
-              {/* Checkbox pilih item */}
               <div className="flex items-center justify-start mr-4">
                 <input
                   type="checkbox"
@@ -150,14 +175,20 @@ const Cart = () => {
 
               <div className="cart-item-quantity">
                 <button
-                  onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    updateQuantity(item.id, item.quantity - 1);
+                  }}
                   disabled={item.quantity <= 1}
                 >
                   −
                 </button>
                 <span>{item.quantity}</span>
                 <button
-                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    updateQuantity(item.id, item.quantity + 1);
+                  }}
                 >
                   +
                 </button>
@@ -165,7 +196,7 @@ const Cart = () => {
                 <button
                   className="btn-remove"
                   onClick={(e) => {
-                    e.stopPropagation(); // penting biar gak ikut navigate
+                    e.stopPropagation();
                     handleRemoveItem(item.id, item.name);
                   }}
                   title="Hapus produk"
@@ -183,7 +214,7 @@ const Cart = () => {
           ))}
         </div>
 
-        {/* === RINGKASAN PESANAN (TIDAK DIUBAH) === */}
+        {/* RINGKASAN PESANAN */}
         <div className="cart-summary">
           <h2>Ringkasan Pesanan</h2>
 
@@ -227,12 +258,25 @@ const Cart = () => {
 
             <button
               className="btn-checkout"
-              onClick={() => navigate('/checkout', { state: { selectedItems } })}
+              onClick={handleCheckout}
               disabled={selectedItems.length === 0}
             >
-              {selectedItems.length === 0 ? 'Pilih Produk Dulu' : 'Lanjut ke Pembayaran'}
+              {selectedItems.length === 0
+                ? 'Pilih Produk Dulu'
+                : !user
+                  ? 'Login untuk Checkout'
+                  : 'Lanjut ke Pembayaran'}
             </button>
           </div>
+
+          {/* Info jika belum login */}
+          {!user && selectedItems.length > 0 && (
+            <div className="login-info">
+              <p className="text-sm text-gray-600 text-center">
+                Kamu belum login. Login dulu untuk melanjutkan pembayaran ya!
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

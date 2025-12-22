@@ -1,79 +1,184 @@
 // src/pages/admin/AdminProducts.jsx
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import {
   FaPlus,
   FaEdit,
   FaTrash,
   FaSearch,
   FaBoxOpen,
+  FaTimes,
+  FaUpload,
 } from 'react-icons/fa';
 import AdminHeader from '../../components/AdminHeader';
 import Swal from 'sweetalert2';
 
 const AdminProducts = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [editingProductId, setEditingProductId] = useState(null);
 
-  // Data dummy produk (nanti bisa diganti dengan state dari context atau API)
-  const products = [
+  // Form state
+  const [formData, setFormData] = useState({
+    name: '',
+    price: '',
+    category: 'Elektronik',
+    stock: '',
+    description: '',
+    image: null,
+    imagePreview: null,
+  });
+
+  // Data dummy produk
+  const [products, setProducts] = useState([
     {
       id: 1,
-      name: 'Laptop Gaming ASUS ROG Strix',
-      price: 25000000,
+      name: 'Smartphone X Pro',
+      price: 7999000,
       category: 'Elektronik',
       stock: 15,
       status: 'active',
-      image: 'https://via.placeholder.com/80?text=Laptop', // Ganti dengan URL gambar asli nanti
+      image: 'https://techdaily.id/wp-content/uploads/2024/11/Cubot-KingKong-X-Pro-Smartphone-Tangguh-Cover.jpg',
     },
     {
       id: 2,
-      name: 'Sepatu Sneakers Nike Air Max',
-      price: 1500000,
-      category: 'Fashion',
-      stock: 0,
-      status: 'outofstock',
-      image: 'https://via.placeholder.com/80?text=Sepatu',
+      name: 'Laptop Gaming Predator X',
+      price: 21999000,
+      category: 'Elektronik',
+      stock: 8,
+      status: 'lowstock',
+      image: 'https://s.alicdn.com/@sc04/kf/H755355196440420487cf079443f2d3d6P.png',
     },
     {
       id: 3,
-      name: 'Smartphone Samsung Galaxy S24',
-      price: 12000000,
-      category: 'Elektronik',
-      stock: 30,
+      name: 'Kaos Polos Premium Cotton',
+      price: 89000,
+      category: 'Fashion',
+      stock: 120,
       status: 'active',
-      image: 'https://via.placeholder.com/80?text=Smartphone',
+      image: 'https://down-id.img.susercontent.com/file/id-11134207-7rasg-m5cy75a07sa05b',
     },
     {
       id: 4,
-      name: 'Tas Ransel Eiger Adventure',
-      price: 850000,
+      name: 'Sepatu Running UltraBoost',
+      price: 1899000,
       category: 'Fashion',
-      stock: 8,
-      status: 'lowstock',
-      image: 'https://via.placeholder.com/80?text=Tas',
+      stock: 35,
+      status: 'active',
+      image: 'https://photo-fhad-fithub.s3.ap-southeast-1.amazonaws.com/Kenzo_Run_31c323e0f8.jpg',
     },
     {
       id: 5,
-      name: 'Kamera DSLR Canon EOS 1500D',
-      price: 18000000,
+      name: 'Headphone Wireless Pro ANC',
+      price: 3499000,
       category: 'Elektronik',
-      stock: 5,
-      status: 'lowstock',
-      image: 'https://via.placeholder.com/80?text=Kamera',
+      stock: 22,
+      status: 'active',
+      image: 'https://img.id.my-best.com/product_images/75f526fbb360ac0f9b81dc06ebacbc0a.jpeg',
     },
-  ];
+  ]);
 
-  // Filter produk berdasarkan search
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     product.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Konfirmasi hapus produk
-  const handleDelete = (productName) => {
+  // Buka modal Tambah
+  const openAddModal = () => {
+    setIsEditMode(false);
+    setEditingProductId(null);
+    setFormData({
+      name: '',
+      price: '',
+      category: 'Elektronik',
+      stock: '',
+      description: '',
+      image: null,
+      imagePreview: null,
+    });
+    setIsModalOpen(true);
+  };
+
+  // Buka modal Edit
+  const openEditModal = (product) => {
+    setIsEditMode(true);
+    setEditingProductId(product.id);
+    setFormData({
+      name: product.name,
+      price: product.price,
+      category: product.category,
+      stock: product.stock,
+      description: product.description || '',
+      image: null,
+      imagePreview: product.image,
+    });
+    setIsModalOpen(true);
+  };
+
+  // Handle upload gambar
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({
+          ...formData,
+          image: file,
+          imagePreview: reader.result,
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Handle simpan (Tambah/Edit)
+  const handleSaveProduct = (e) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.price || !formData.stock || (!formData.imagePreview && !isEditMode)) {
+      Swal.fire('Error', 'Harap isi semua field wajib!', 'error');
+      return;
+    }
+
+    if (isEditMode) {
+      // Edit produk
+      setProducts(products.map(p => 
+        p.id === editingProductId 
+          ? {
+              ...p,
+              name: formData.name,
+              price: Number(formData.price),
+              category: formData.category,
+              stock: Number(formData.stock),
+              description: formData.description,
+              image: formData.imagePreview,
+            }
+          : p
+      ));
+      Swal.fire('Berhasil!', 'Produk berhasil diperbarui.', 'success');
+    } else {
+      // Tambah produk baru
+      const newProduct = {
+        id: products.length + 1,
+        name: formData.name,
+        price: Number(formData.price),
+        category: formData.category,
+        stock: Number(formData.stock),
+        status: Number(formData.stock) > 10 ? 'active' : Number(formData.stock) > 0 ? 'lowstock' : 'outofstock',
+        image: formData.imagePreview,
+      };
+      setProducts([...products, newProduct]);
+      Swal.fire('Berhasil!', 'Produk baru berhasil ditambahkan.', 'success');
+    }
+
+    setIsModalOpen(false);
+  };
+
+  // Handle hapus
+  const handleDelete = (id, productName) => {
     Swal.fire({
       title: 'Hapus Produk?',
-      text: `Produk "${productName}" akan dihapus permanen dari toko.`,
+      text: `Produk "${productName}" akan dihapus permanen.`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#ef4444',
@@ -82,28 +187,23 @@ const AdminProducts = () => {
       cancelButtonText: 'Batal',
     }).then((result) => {
       if (result.isConfirmed) {
-        // Logika hapus produk (nanti connect ke API)
-        Swal.fire({
-          title: 'Terhapus!',
-          text: 'Produk berhasil dihapus.',
-          icon: 'success',
-          timer: 2000,
-          showConfirmButton: false,
-        });
+        setProducts(products.filter(p => p.id !== id));
+        Swal.fire('Terhapus!', 'Produk berhasil dihapus.', 'success');
       }
     });
   };
 
-  // Badge status stok
   const getStatusBadge = (status) => {
-    if (status === 'active') {
-      return <span className="status-badge status-active">Tersedia</span>;
-    } else if (status === 'lowstock') {
-      return <span className="status-badge status-lowstock">Stok Menipis</span>;
-    } else if (status === 'outofstock') {
-      return <span className="status-badge status-outofstock">Habis</span>;
+    switch (status) {
+      case 'active':
+        return <span className="status-badge status-active">Tersedia</span>;
+      case 'lowstock':
+        return <span className="status-badge status-lowstock">Stok Menipis</span>;
+      case 'outofstock':
+        return <span className="status-badge status-outofstock">Habis</span>;
+      default:
+        return null;
     }
-    return null;
   };
 
   return (
@@ -111,21 +211,20 @@ const AdminProducts = () => {
 
       <main className="main-content admin-products-container">
         <div className="container mx-auto px-4 py-8">
-          {/* Header Section */}
+          {/* Header */}
           <div className="products-header">
             <h1 className="products-title">
               <FaBoxOpen />
               Kelola Produk
             </h1>
-            <Link to="/admin/products/add" className="btn-add-product">
+            <button onClick={openAddModal} className="btn-add-product">
               <FaPlus />
               Tambah Produk
-            </Link>
+            </button>
           </div>
 
-          {/* Search Bar */}
+          {/* Search */}
           <div className="search-container mb-8">
-            <FaSearch className="search-icon" />
             <input
               type="text"
               placeholder="Cari nama produk atau kategori..."
@@ -134,9 +233,8 @@ const AdminProducts = () => {
               className="search-input"
             />
           </div>
-          <br />
 
-          {/* Tabel Produk */}
+          {/* Tabel */}
           <div className="products-table-container">
             <div className="overflow-x-auto">
               <table className="products-table">
@@ -154,7 +252,7 @@ const AdminProducts = () => {
                 <tbody>
                   {filteredProducts.length === 0 ? (
                     <tr>
-                      <td colSpan="7" className="text-center py-10 text-gray-500">
+                      <td colSpan="7" className="text-center py-12 text-gray-500">
                         Tidak ada produk ditemukan
                       </td>
                     </tr>
@@ -165,7 +263,7 @@ const AdminProducts = () => {
                           <img
                             src={product.image}
                             alt={product.name}
-                            className="w-16 h-16 object-cover rounded-lg"
+                            className="product-thumbnail"
                           />
                         </td>
                         <td data-label="Produk">
@@ -181,12 +279,16 @@ const AdminProducts = () => {
                         <td data-label="Status">{getStatusBadge(product.status)}</td>
                         <td data-label="Aksi">
                           <div className="action-buttons">
-                            <button className="btn-edit" title="Edit">
+                            <button
+                              className="btn-edit"
+                              onClick={() => openEditModal(product)}
+                              title="Edit"
+                            >
                               <FaEdit />
                             </button>
                             <button
                               className="btn-delete"
-                              onClick={() => handleDelete(product.name)}
+                              onClick={() => handleDelete(product.id, product.name)}
                               title="Hapus"
                             >
                               <FaTrash />
@@ -214,6 +316,127 @@ const AdminProducts = () => {
           </div>
         </div>
       </main>
+
+      {/* MODAL TAMBAH / EDIT PRODUK */}
+      {isModalOpen && (
+        <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
+          <div className="modal-content add-product-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="close-modal" onClick={() => setIsModalOpen(false)}>
+              <FaTimes />
+            </button>
+
+            <h2 className="modal-title">
+              <FaEdit className="mr-3" />
+              {isEditMode ? 'Edit Produk' : 'Tambah Produk Baru'}
+            </h2>
+
+            <form onSubmit={handleSaveProduct} className="add-product-form">
+              {/* Upload Gambar */}
+              <div className="form-group mb-6">
+                <label className="form-label">Gambar Produk {isEditMode ? '' : '*'}</label>
+                <div className="image-upload-area">
+                  {formData.imagePreview ? (
+                    <img src={formData.imagePreview} alt="Preview" className="image-preview" />
+                  ) : (
+                    <div className="upload-placeholder">
+                      <FaUpload className="upload-icon" />
+                      <p className="upload-text">Klik untuk upload gambar</p>
+                    </div>
+                  )}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    className="image-input"
+                    required={!isEditMode}
+                  />
+                </div>
+              </div>
+
+              {/* Nama Produk */}
+              <div className="form-group">
+                <label className="form-label">Nama Produk *</label>
+                <input
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="Masukkan nama produk"
+                  className="form-input"
+                  required
+                />
+              </div>
+
+              {/* Harga & Stok */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="form-group">
+                  <label className="form-label">Harga (Rp) *</label>
+                  <input
+                    type="number"
+                    value={formData.price}
+                    onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                    placeholder="0"
+                    className="form-input"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Stok *</label>
+                  <input
+                    type="number"
+                    value={formData.stock}
+                    onChange={(e) => setFormData({ ...formData, stock: e.target.value })}
+                    placeholder="0"
+                    className="form-input"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Kategori */}
+              <div className="form-group">
+                <label className="form-label">Kategori</label>
+                <select
+                  value={formData.category}
+                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                  className="form-input"
+                >
+                  <option value="Elektronik">Elektronik</option>
+                  <option value="Fashion">Fashion</option>
+                  <option value="Makanan">Makanan & Minuman</option>
+                  <option value="Kesehatan">Kesehatan & Kecantikan</option>
+                  <option value="Rumah Tangga">Rumah Tangga</option>
+                </select>
+              </div>
+
+              {/* Deskripsi */}
+              <div className="form-group">
+                <label className="form-label">Deskripsi Produk</label>
+                <textarea
+                  value={formData.description}
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  placeholder="Jelaskan produk ini..."
+                  rows="4"
+                  className="form-input"
+                />
+              </div>
+
+              {/* Buttons */}
+              <div className="modal-buttons">
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="btn-cancel"
+                >
+                  Batal
+                </button>
+                <button type="submit" className="btn-save">
+                  {isEditMode ? 'Simpan Perubahan' : 'Simpan Produk'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 };
