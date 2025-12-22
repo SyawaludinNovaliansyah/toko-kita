@@ -1789,8 +1789,9 @@ button {
 
 /* Action Button */
 .btn-view {
-  color: #4c51bf;
-  font-size: 1.4rem;
+  color: #ffffff;
+  font-size: 1rem;
+  font-family:sans-serif;
   transition: all 0.2s;
 }
 
