@@ -21,10 +21,8 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-import AdminHeader from '../../components/AdminHeader';
 import { useAuth } from '../../context/AuthContext';
 import Swal from 'sweetalert2';
-import Footer from '../../components/Footer';
 
 const AdminDashboard = () => {
   const { user } = useAuth();
@@ -83,8 +81,10 @@ const AdminDashboard = () => {
   <div className="container">
     {/* Greeting */}
     <div className="admin-greeting mb-10">
+      <br />
       <h1>Halo, {user?.name || 'Admin'}!</h1>
       <p>Berikut ringkasan performa toko Anda hari ini</p>
+      <br />
     </div>
 
     {/* Stats Cards */}
@@ -214,7 +214,6 @@ const AdminDashboard = () => {
     </div>
   </div>
 </main>
-<Footer />
     </>
     
   );

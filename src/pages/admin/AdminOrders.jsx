@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FaEye, FaShoppingCart, FaTimes, FaUser, FaCalendarAlt, FaMoneyBillWave, FaBox } from 'react-icons/fa';
 import AdminHeader from '../../components/AdminHeader';
+import '../../styles/AdminOrders.css';
 
 const AdminOrders = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -203,7 +204,6 @@ const AdminOrders = () => {
             </button>
 
             <h2 className="modal-title">
-              <FaEye className="mr-3" />
               Detail Pesanan {selectedOrder.id}
             </h2>
 
@@ -211,7 +211,6 @@ const AdminOrders = () => {
               {/* Info Utama */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="detail-card">
-                  <div className="detail-icon"><FaUser /></div>
                   <div>
                     <p className="detail-label">Pelanggan</p>
                     <p className="detail-value">{selectedOrder.customer}</p>
@@ -220,7 +219,6 @@ const AdminOrders = () => {
                 </div>
 
                 <div className="detail-card">
-                  <div className="detail-icon"><FaCalendarAlt /></div>
                   <div>
                     <p className="detail-label">Tanggal Pesan</p>
                     <p className="detail-value">{selectedOrder.date}</p>
@@ -228,17 +226,15 @@ const AdminOrders = () => {
                 </div>
 
                 <div className="detail-card">
-                  <div className="detail-icon"><FaMoneyBillWave /></div>
                   <div>
                     <p className="detail-label">Total Pembayaran</p>
-                    <p className="detail-value text-2xl font-bold text-green-600">
+                    <p className="">
                       Rp {selectedOrder.total.toLocaleString('id-ID')}
                     </p>
                   </div>
                 </div>
 
                 <div className="detail-card">
-                  <div className="detail-icon"><FaBox /></div>
                   <div>
                     <p className="detail-label">Status Pesanan</p>
                     <div className="mt-2">{getStatusBadge(selectedOrder.status)}</div>

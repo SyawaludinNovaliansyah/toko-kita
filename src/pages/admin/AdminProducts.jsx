@@ -11,6 +11,7 @@ import {
 } from 'react-icons/fa';
 import AdminHeader from '../../components/AdminHeader';
 import Swal from 'sweetalert2';
+import '../../styles/AdminProducts.css';
 
 const AdminProducts = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -211,6 +212,7 @@ const AdminProducts = () => {
 
       <main className="main-content admin-products-container">
         <div className="container mx-auto px-4 py-8">
+          <br />
           {/* Header */}
           <div className="products-header">
             <h1 className="products-title">

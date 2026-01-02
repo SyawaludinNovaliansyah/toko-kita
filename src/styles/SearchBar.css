@@ -1,0 +1,129 @@
+/* SearchBar.css - Clean, Modern & Compact */
+
+.searchbar-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.searchbar-form {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.searchbar-input {
+  width: 100%;
+  padding: 1rem 1.4rem 1rem 4.5rem;
+  font-size: 1.1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.searchbar-input:focus {
+  outline: none;
+  border-color: #4c51bf;
+  box-shadow: 0 0 0 5px rgba(76, 81, 191, 0.2);
+}
+
+.searchbar-input::placeholder {
+  color: #94a3b8;
+}
+
+.searchbar-btn {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(to right, #4c51bf, #6366f1);
+  color: white;
+  border: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(76, 81, 191, 0.3);
+}
+
+.searchbar-btn:hover {
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 8px 20px rgba(76, 81, 191, 0.4);
+}
+
+/* Kategori Pill Kecil */
+.searchbar-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.category-pill {
+  padding: 0.55rem 1.3rem;
+  background-color: #f1f5f9;
+  color: #475569;
+  border: none;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.category-pill:hover {
+  background-color: #e0e7ff;
+  color: #4c51bf;
+}
+
+.category-pill.active {
+  background: linear-gradient(to right, #4c51bf, #6366f1);
+  color: white;
+  box-shadow: 0 4px 12px rgba(76, 81, 191, 0.3);
+}
+
+.category-pill.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 3px;
+  background: #4c51bf;
+  border-radius: 2px;
+}
+
+/* Responsif */
+@media (max-width: 640px) {
+  .searchbar-container {
+    margin: 1.5rem auto;
+  }
+
+  .searchbar-input {
+    padding: 0.95rem 1.2rem 0.95rem 4.2rem;
+    font-size: 1rem;
+  }
+
+  .searchbar-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .category-pill {
+    padding: 0.5rem 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  .searchbar-categories {
+    gap: 0.6rem;
+  }
+}

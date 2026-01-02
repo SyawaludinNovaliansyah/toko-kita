@@ -1,0 +1,130 @@
+/* src/components/Footer.css */
+
+.footer {
+  background-color: #1e293b; /* slate-800 */
+  color: #e2e8f0; /* slate-200 */
+  margin-top: auto; /* agar footer selalu di bawah jika konten pendek */
+  font-size: 0.95rem;
+}
+
+.footer-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  border-bottom: 1px solid #334155; /* slate-700 */
+}
+
+.footer-section h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #f1f5f9; /* slate-100 */
+  position: relative;
+}
+
+.footer-section h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 40px;
+  height: 3px; /* indigo aksen */
+  border-radius: 2px;
+}
+
+.footer-section p {
+  margin: 0.75rem 0;
+  line-height: 1.6;
+  color: #cbd5e1; /* slate-300 */
+}
+
+.footer-section a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #4c51bf;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: #334155;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: #4c51bf;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(76, 81, 191, 0.3);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background-color: #111827; /* slate-900 */
+  font-size: 0.9rem;
+  color: #94a3b8; /* slate-400 */
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* Responsif */
+@media (min-width: 640px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3.5rem 2rem 2.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+
+  .social-icons a {
+    width: 48px;
+    height: 48px;
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    padding: 4rem 3rem 3rem;
+  }
+}
+
+/* Jika halaman utama kamu menggunakan flex untuk layout full height */
+html, body, #root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Pastikan konten utama mengambil ruang yang tersedia */
+main {
+  flex: 1;
+}

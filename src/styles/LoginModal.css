@@ -1,0 +1,199 @@
+/* src/components/LoginModal.css */
+
+/* Overlay / Backdrop */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000;
+  animation: fadeIn 0.35s ease-out;
+}
+
+/* Konten Modal */
+.modal-content {
+  background: white;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 18px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.4s ease-out;
+}
+
+/* Tombol Close (X) */
+.close-modal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #6b7280;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  z-index: 10;
+}
+
+.close-modal:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* Judul Modal */
+.modal-content h2 {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 3rem 2rem 1.5rem;
+  padding-top: 1rem;
+}
+
+/* Form */
+.login-form {
+  padding: 0 2rem 2.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.95rem 1.1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4c51bf;
+  background-color: white;
+  box-shadow: 0 0 0 5px rgba(76, 81, 191, 0.18);
+}
+
+.form-group input::placeholder {
+  color: #94a3b8;
+}
+
+/* Error Message */
+.error-message {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  text-align: center;
+  border: 1px solid #fecaca;
+}
+
+/* Tombol Login */
+.btn-login {
+  width: 100%;
+  padding: 1.1rem;
+  background: linear-gradient(to right, #4c51bf, #6366f1);
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  position: relative;
+}
+
+.btn-login:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(76, 81, 191, 0.35);
+}
+
+.btn-login:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Spinner Loading */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid transparent;
+  border-top: 2.5px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 480px) {
+  .modal-content {
+    max-width: 95%;
+    border-radius: 16px;
+  }
+
+  .modal-content h2 {
+    font-size: 1.6rem;
+    margin: 2.5rem 1.5rem 1.2rem;
+  }
+
+  .login-form {
+    padding: 0 1.5rem 2rem;
+  }
+
+  .form-group input {
+    padding: 0.9rem;
+  }
+
+  .btn-login {
+    padding: 1rem;
+  }
+}

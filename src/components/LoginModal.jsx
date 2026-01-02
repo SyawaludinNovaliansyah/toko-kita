@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
+import '../styles/LoginModal.css';
 
 const LoginModal = ({ isOpen, onClose }) => {
   const { login } = useAuth();

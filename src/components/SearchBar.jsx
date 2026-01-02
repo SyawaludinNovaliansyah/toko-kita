@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import '../styles/SearchBar.css';
 
 const SearchBar = ({ onSearch, onCategoryChange }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -26,7 +27,8 @@ const SearchBar = ({ onSearch, onCategoryChange }) => {
   };
 
   return (
-    <div className="search-filter-container">
+  <div className="search-filter-container">
+    <div className="search-wrapper">
       <form onSubmit={handleSearch} className="search-form">
         <input
           type="text"
@@ -35,15 +37,13 @@ const SearchBar = ({ onSearch, onCategoryChange }) => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-input"
         />
-        <button type="submit" className="search-btn">
-          <FaSearch />
-        </button>
       </form>
 
       <div className="category-filter">
         {categories.map(({ value, label }) => (
           <button
             key={value}
+            type="button" // penting agar tidak submit form
             className={`category-btn ${selectedCategory === value ? 'active' : ''}`}
             onClick={() => handleCategoryChange(value)}
           >
@@ -52,7 +52,8 @@ const SearchBar = ({ onSearch, onCategoryChange }) => {
         ))}
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default SearchBar;

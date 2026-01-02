@@ -14,6 +14,7 @@ import useCart from '../hooks/useCart';
 import { useAuth } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 import LoginModal from './LoginModal'; // Komponen baru
+import '../styles/Header.css';
 
 const Header = () => {
   const { getCartCount } = useCart();

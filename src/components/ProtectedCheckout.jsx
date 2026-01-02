@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Checkout from '../pages/Checkout'; // Ganti dengan path Checkout kamu
 import Swal from 'sweetalert2';
+import '../styles/ProtectedCheckout.css';
 
 const ProtectedCheckout = () => {
   const { user } = useAuth();

@@ -1,0 +1,242 @@
+/* src/components/AdminLoginModal.css */
+
+/* Overlay / Backdrop */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Konten Modal */
+.modal-content.admin-modal {
+  background: white;
+  width: 90%;
+  max-width: 420px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.4s ease-out;
+}
+
+/* Tombol Close (X) */
+.close-modal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #000000;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.close-modal:hover {
+  background: rgba(0, 0, 0, 0.2);
+  color: #000000;
+  transform: scale(1.1);
+}
+
+/* Header Modal Admin */
+.admin-modal-header {
+  text-align: center;
+  padding: 2.5rem 2rem 1.5rem;
+  background: white;
+  color: #000000;
+}
+
+.admin-modal-header .admin-modal-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  opacity: 0.95;
+}
+
+.admin-modal-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.admin-modal-header p {
+  opacity: 0.9;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Form */
+.login-form {
+  padding: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form-group label svg {
+  color: #4c51bf;
+  font-size: 1.1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #f8fafc;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4c51bf;
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(76, 81, 191, 0.15);
+}
+
+.form-group input::placeholder {
+  color: #94a3b8;
+}
+
+.form-group input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.error-message {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #fecaca;
+}
+
+/* Tombol Login */
+.btn-login {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to right, #4c51bf, #6366f1);
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-login:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(76, 81, 191, 0.3);
+}
+
+.btn-login:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Spinner Loading */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Petunjuk kecil di bawah */
+.login-form + div {
+  text-align: center;
+  padding: 0 2rem 2rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 480px) {
+  .modal-content.admin-modal {
+    width: 95%;
+    border-radius: 14px;
+  }
+
+  .admin-modal-header {
+    padding: 2rem 1.5rem 1.2rem;
+  }
+
+  .admin-modal-header .admin-modal-icon {
+    font-size: 3rem;
+  }
+
+  .admin-modal-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .login-form {
+    padding: 1.5rem;
+  }
+
+  .form-group input {
+    padding: 0.8rem;
+  }
+
+  .btn-login {
+    padding: 0.9rem;
+  }
+}

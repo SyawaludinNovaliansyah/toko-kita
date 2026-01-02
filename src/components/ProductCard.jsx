@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import useCart from '../hooks/useCart';
 import { FaCartPlus } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import '../styles/ProductCard.css';
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // TAMBAHKAN INI
 import { FaInstagram, FaGithub } from 'react-icons/fa';
+import '../styles/Footer.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

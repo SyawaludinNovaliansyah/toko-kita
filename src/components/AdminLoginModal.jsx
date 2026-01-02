@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FaTimes, FaUserShield, FaEnvelope, FaLock } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import '../styles/AdminLoginModal.css';
 import Swal from 'sweetalert2';
 
 const AdminLoginModal = ({ isOpen, onClose }) => {
