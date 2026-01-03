@@ -405,11 +405,11 @@ button {
   text-align: center;
 }
 
-.action-buttons {
+/* .action-buttons {
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
-}
+} */
 
 /* Cart Page */
 .cart-empty {
@@ -752,7 +752,7 @@ button {
 }
 
 /* Modal Overlay */
-.modal-overlay {
+/* .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -763,30 +763,15 @@ button {
   justify-content: center;
   align-items: center;
   z-index: 2000;
-}
+} */
 
-/* Modal Content */
-.modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  width: 90%;
-  max-width: 400px;
-  position: relative;
-  animation: modalFadeIn 0.3s ease-out;
-}
 
 @keyframes modalFadeIn {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
 }
 
-.modal-content h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #1f2937;
-}
+
 
 .login-form .form-group {
   margin-bottom: 1.2rem;
@@ -1796,7 +1781,7 @@ button {
    MODAL TAMBAH PRODUK
    ============================================ */
 
-.modal-overlay {
+/* .modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
@@ -1805,7 +1790,7 @@ button {
   justify-content: center;
   z-index: 1000;
   animation: fadeIn 0.3s ease;
-}
+} */
 
 .add-product-modal {
   background: white;

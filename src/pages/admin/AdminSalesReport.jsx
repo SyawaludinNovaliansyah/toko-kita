@@ -10,7 +10,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import AdminHeader from '../../components/AdminHeader'; // Import CSS khusus (buat file ini nanti)
+import AdminHeader from '../../components/AdminHeader';
+import '../../styles/AdminProducts.css'; // Import CSS khusus (buat file ini nanti)
 
 const AdminSalesReport = () => {
   // Data pendapatan bulanan 2025 (dummy)

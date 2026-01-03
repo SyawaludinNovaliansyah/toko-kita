@@ -138,7 +138,7 @@ const AdminOrders = () => {
                     <th>Tanggal</th>
                     <th>Total</th>
                     <th>Status</th>
-                    <th>Aksi</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -164,7 +164,7 @@ const AdminOrders = () => {
                           </div>
                         </td>
                         <td data-label="Status">{getStatusBadge(order.status)}</td>
-                        <td data-label="Aksi">
+                        <td data-label="">
                           <button
                             className="btn-view"
                             onClick={() => openDetailModal(order)}

@@ -213,6 +213,7 @@ const AdminProducts = () => {
       <main className="main-content admin-products-container">
         <div className="container mx-auto px-4 py-8">
           <br />
+          <br />
           {/* Header */}
           <div className="products-header">
             <h1 className="products-title">
@@ -297,7 +298,9 @@ const AdminProducts = () => {
                             </button>
                           </div>
                         </td>
+                      
                       </tr>
+                      
                     ))
                   )}
                 </tbody>

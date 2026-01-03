@@ -1,0 +1,206 @@
+/* src/pages/admin/AdminSalesReport.css */
+
+/* Container utama */
+.admin-sales-report-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f8fafc 0%, #e2e8f0 100%);
+  padding: 2rem 0;
+}
+
+.admin-sales-report-container .container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Header Halaman */
+.sales-report-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.sales-report-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.sales-report-title svg {
+  color: #4c51bf;
+  font-size: 2.8rem;
+}
+
+/* Summary Cards Grid */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+/* Summary Card */
+.summary-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--accent-color);
+  border-radius: 0 6px 6px 0;
+}
+
+.summary-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.summary-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card:nth-child(1) .summary-icon { background: #dcfce7; color: #166534; --accent-color: #16a34a; }
+.summary-card:nth-child(2) .summary-icon { background: #dbeafe; color: #1d4ed8; --accent-color: #3b82f6; }
+.summary-card:nth-child(3) .summary-icon { background: #e9d5ff; color: #9333ea; --accent-color: #a855f7; }
+.summary-card:nth-child(4) .summary-icon { background: #fed7aa; color: #f97316; --accent-color: #f97316; }
+
+.summary-value {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0.5rem 0;
+  line-height: 1.2;
+}
+
+.summary-label {
+  font-size: 1.1rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Bar Chart Container */
+.chart-container {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.chart-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Tooltip Recharts Custom (sudah di JSX, tapi tambahan styling jika perlu) */
+.recharts-tooltip-wrapper {
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+
+.recharts-default-tooltip {
+  border-radius: 12px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Bar Custom */
+.recharts-bar-rectangle {
+  transition: all 0.3s ease;
+}
+
+/* ============================================
+   RESPONSIVE MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+  .sales-report-title {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sales-report-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .summary-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .summary-card {
+    padding: 1.8rem;
+  }
+
+  .summary-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .summary-value {
+    font-size: 2rem;
+  }
+
+  .chart-container {
+    padding: 2rem;
+  }
+
+  .chart-title {
+    font-size: 1.6rem;
+  }
+
+  /* Kurangi tinggi chart di mobile */
+  .chart-container > div {
+    height: 350px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sales-report-title {
+    font-size: 1.8rem;
+  }
+
+  .summary-value {
+    font-size: 1.8rem;
+  }
+
+  .summary-card {
+    padding: 1.5rem;
+  }
+
+  .summary-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .chart-container {
+    padding: 1.5rem;
+  }
+
+  .chart-container > div {
+    height: 300px !important;
+  }
+}

@@ -89,7 +89,7 @@
 /* ===============================
    MOBILE HAMBURGER
 ================================ */
-.mobile-menu-toggle {
+.mobile-menu-toggle-admin {
   background: none;
   border: none;
   color: #ffffff !important;
@@ -97,9 +97,10 @@
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 8px;
+  
 }
 
-.mobile-menu-toggle:hover {
+.mobile-menu-toggle-admin:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -220,7 +221,7 @@
    RESPONSIVE
 ================================ */
 @media (min-width: 768px) {
-  .mobile-menu-toggle {
+  .mobile-menu-toggle-admin {
     display: none;
   }
 
@@ -241,14 +242,21 @@
 
 
 /* Header mobile (TOKOKITA Admin) */
-.mobile-nav-header {
+.mobile-nav-header-admin {
+    padding: 1.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+  min-height: 80px;
   background: #4c51bf !important;  /* UNGU */
   color: #ffffff !important;
 }
 
 /* Text di header mobile */
-.mobile-nav-header .mobile-logo,
-.mobile-nav-header span {
+.mobile-nav-header-admin .mobile-logo,
+.mobile-nav-header-admin span {
   color: #ffffff !important;
 }
 

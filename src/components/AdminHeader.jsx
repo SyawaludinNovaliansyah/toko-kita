@@ -23,33 +23,32 @@ const AdminHeader = () => {
     document.body.style.overflow = mobileMenuOpen ? 'hidden' : 'auto';
   }, [mobileMenuOpen]);
 
-  const handleLogout = () => {
-    Swal.fire({
-      title: 'Keluar dari Panel Admin?',
-      text: 'Anda akan diarahkan ke halaman utama',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#ef4444',
-      cancelButtonText: 'Batal',
-      confirmButtonText: 'Keluar',
-    }).then((res) => {
-      if (res.isConfirmed) {
-        // logout auth
+const handleLogout = () => {
+  Swal.fire({
+    title: 'Keluar dari Panel Admin?',
+    text: 'Anda akan diarahkan ke halaman utama',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#ef4444',
+    cancelButtonText: 'Batal',
+    confirmButtonText: 'Keluar',
+  }).then((res) => {
+    if (res.isConfirmed) {
+      // tampilkan alert sukses DULU
+      Swal.fire({
+        icon: 'success',
+        title: 'Berhasil Logout',
+        text: 'Anda telah keluar dari akun admin',
+        timer: 1500,
+        showConfirmButton: false,
+      }).then(() => {
+        // BARU logout & redirect
         logout();
-
-        // alert sukses
-        Swal.fire({
-          icon: 'success',
-          title: 'Berhasil Logout',
-          text: 'Anda telah keluar dari akun admin',
-          timer: 1800,
-          showConfirmButton: false,
-        }).then(() => {
-          navigate('/'); // arahkan ke halaman utama
-        });
-      }
-    });
-  };
+        navigate('/');
+      });
+    }
+  });
+};
 
   return (
     <>
@@ -79,7 +78,7 @@ const AdminHeader = () => {
             </nav>
 
             <button
-              className="mobile-menu-toggle"
+              className="mobile-menu-toggle-admin"
               onClick={() => setMobileMenuOpen(true)}
             >
               <FaBars />
@@ -98,7 +97,7 @@ const AdminHeader = () => {
 
       {/* MOBILE MENU */}
       <aside className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`}>
-        <div className="mobile-nav-header">
+        <div className="mobile-nav-header-admin">
           <div>
             <h3>TOKOKITA <span>Admin</span></h3>
             

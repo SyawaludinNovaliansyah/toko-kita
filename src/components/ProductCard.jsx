@@ -51,11 +51,11 @@ const ProductCard = ({ product }) => {
           </Link>
 
           <button
-            className="btn-cart flex-1 flex items-center justify-center gap-2"
+            className="btn-cart flex-1 flex items-center justify-center gap-2 "
             onClick={handleAddToCart}
           >
             <FaCartPlus />
-            Tambah (+)
+            Tambah 
           </button>
         </div>
       </div>

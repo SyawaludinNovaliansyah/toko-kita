@@ -83,7 +83,6 @@ const AdminDashboard = () => {
     <div className="admin-greeting mb-10">
       <br />
       <h1>Halo, {user?.name || 'Admin'}!</h1>
-      <p>Berikut ringkasan performa toko Anda hari ini</p>
       <br />
     </div>
 

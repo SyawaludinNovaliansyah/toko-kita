@@ -103,7 +103,7 @@
 }
 
 .btn-cart {
-  background: linear-gradient(to right, #4c51bf, #6366f1);
+  background: #3b82f6;
   color: white;
   border: none;
   flex: 1;
@@ -112,7 +112,7 @@
 }
 
 .btn-cart:hover {
-  background: linear-gradient(to right, #4338ca, #4c51bf);
+  background: #2563eb;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(76, 81, 191, 0.4);
 }

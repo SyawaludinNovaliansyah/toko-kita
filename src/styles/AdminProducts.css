@@ -179,11 +179,12 @@
 }
 
 /* Action Buttons */
+/* Action Buttons */
 .action-buttons {
   display: flex;
   gap: 1rem;
+  align-items: end;
 }
-
 .btn-edit,
 .btn-delete {
   width: 42px;
@@ -191,13 +192,17 @@
   border-radius: 10px;
   border: none;
   cursor: pointer;
+
+  /* FIX PALING PENTING */
   display: flex;
   align-items: center;
   justify-content: center;
+
   transition: all 0.3s ease;
   font-size: 1.3rem;
 }
 
+/* Edit */
 .btn-edit {
   background: #dbeafe;
   color: #2563eb;
@@ -209,6 +214,7 @@
   transform: scale(1.1);
 }
 
+/* Delete */
 .btn-delete {
   background: #fee2e2;
   color: #dc2626;
@@ -219,6 +225,7 @@
   color: white;
   transform: scale(1.1);
 }
+
 
 /* Pagination */
 .pagination {
@@ -531,12 +538,12 @@
   }
 
   .action-buttons {
-    justify-content: flex-end;
-    margin-top: 1rem;
+    justify-content: flex-end; /* lebih natural di mobile card */
+    gap: 0.75rem;
   }
 
   .grid-cols-2 {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
   }
 
   .add-product-form {
